@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id "org.jlleitschuh.gradle.ktlint" version "$jlleitschuh_ktlint_version"
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,6 +43,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     implementation "com.google.android.material:material:$android_material_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
