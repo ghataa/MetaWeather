@@ -32,6 +32,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -47,6 +60,8 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_gson_converter_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
