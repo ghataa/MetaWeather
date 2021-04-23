@@ -1,10 +1,13 @@
 package com.ghataa.metaweather.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
+@Entity(tableName = "weather_info_list")
 data class WeatherInfo(
-    @SerializedName("id") val id: Long,
+    @PrimaryKey @SerializedName("id") val id: Long,
     @SerializedName("applicable_date") val applicableDate: Date,
     @SerializedName("weather_state_name") val weatherStateName: String,
     @SerializedName("weather_state_abbr") val weatherStateAbbr: String,
