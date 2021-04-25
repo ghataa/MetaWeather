@@ -30,6 +30,11 @@ class DashboardFragment : DaggerFragment() {
         return viewBinding.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.loadWeatherInfo(false)
+    }
+
     private fun initViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
         viewBinding = FragmentDashboardBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
