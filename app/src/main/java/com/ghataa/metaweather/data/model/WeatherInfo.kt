@@ -14,6 +14,7 @@ data class WeatherInfo(
     @SerializedName("wind_speed") val windSpeed: Double,
     @SerializedName("wind_direction") val windDirection: Double,
     @SerializedName("wind_direction_compass") val windDirectionCompass: String,
+    @SerializedName("created") val created: Date,
     @SerializedName("min_temp") val minTemp: Double,
     @SerializedName("max_temp") val maxTemp: Double,
     @SerializedName("the_temp") val currentTemp: Double,

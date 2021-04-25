@@ -19,14 +19,26 @@ class DashboardViewModel @Inject constructor(
     private val _items = MutableLiveData<List<WeatherInfo>>().apply { value = emptyList() }
     val items: LiveData<List<WeatherInfo>> = _items
 
-    fun loadWeatherInfo() {
+    private val _refreshingWeatherInfoList = MutableLiveData<Boolean>()
+    val refreshingWeatherInfoList: LiveData<Boolean> = _refreshingWeatherInfoList
+
+    fun loadWeatherInfo(invalidateCache: Boolean) {
+        if (invalidateCache) weatherInfoRepository.invalidateCache()
+
+        _refreshingWeatherInfoList.value = true
+
         viewModelScope.launch {
             val result = weatherInfoRepository.getWeatherInfoList(
-                Calendar.getInstance().get(Calendar.MONTH) + 1, // starts from 0
+                Calendar.getInstance().get(Calendar.MONTH) + 1, // because it starts from 0
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
             )
 
-            _items.value = if (result is Success) ArrayList(result.data) else emptyList()
+            _items.value =
+                if (result is Success) ArrayList(result.data).sortedBy { it.created }.reversed() else emptyList()
+
+            _refreshingWeatherInfoList.value = false
         }
     }
+
+    fun refresh() = loadWeatherInfo(true)
 }
