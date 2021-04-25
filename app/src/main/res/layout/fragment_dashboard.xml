@@ -38,7 +38,7 @@
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewmodel.items.size() > 0 ? viewmodel.items.get(0).created.toString() : ``}"
+                android:text="@{!viewmodel.items.empty ? viewmodel.items.get(0).created.toString() : ``}"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/city"
@@ -52,6 +52,7 @@
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/age"
+                app:src="@{viewmodel.items}"
                 tools:src="@drawable/ic_launcher_background" />
 
             <TextView
@@ -59,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@{viewmodel.items.size() > 0 ? Double.toString(viewmodel.items.get(0).currentTemp) + `°C` : ``}"
+                android:text="@{!viewmodel.items.empty ? Double.toString(viewmodel.items.get(0).currentTemp) + `°C` : ``}"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toTopOf="@+id/icon"
@@ -70,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@{viewmodel.items.size() > 0 ? viewmodel.items.get(0).weatherStateName : ``}"
+                android:text="@{!viewmodel.items.empty ? viewmodel.items.get(0).weatherStateName : ``}"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/icon"
                 app:layout_constraintStart_toEndOf="@+id/icon"
