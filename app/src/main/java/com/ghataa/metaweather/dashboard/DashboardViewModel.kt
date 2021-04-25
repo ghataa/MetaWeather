@@ -26,7 +26,7 @@ class DashboardViewModel @Inject constructor(
         loadWeatherInfo()
     }
 
-    fun loadWeatherInfo() {
+    private fun loadWeatherInfo() {
         _refreshingWeatherInfoList.value = true
 
         viewModelScope.launch {
@@ -35,7 +35,8 @@ class DashboardViewModel @Inject constructor(
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
             )
 
-            _items.value = if (result is Success) ArrayList(result.data) else emptyList()
+            _items.value =
+                if (result is Success) ArrayList(result.data).sortedBy { it.created }.reversed() else emptyList()
 
             _refreshingWeatherInfoList.value = false
         }

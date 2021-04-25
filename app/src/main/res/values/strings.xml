@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">MetaWeather</string>
+  <string name="city">Budapest</string>
+  <string name="temperature">%d °C</string>
 </resources>

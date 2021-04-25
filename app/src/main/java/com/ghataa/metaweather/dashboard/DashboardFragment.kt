@@ -35,9 +35,7 @@ class DashboardFragment : DaggerFragment() {
             viewmodel = viewModel
         }
 
-        viewBinding.loadWeatherInfoButton.setOnClickListener {
-            viewModel.loadWeatherInfo()
-        }
+        viewBinding.lifecycleOwner = this.viewLifecycleOwner
     }
 
     private fun initSwipeToRefresh() {
