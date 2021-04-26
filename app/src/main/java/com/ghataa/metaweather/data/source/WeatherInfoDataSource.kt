@@ -3,6 +3,8 @@ package com.ghataa.metaweather.data.source
 import com.ghataa.metaweather.data.Result
 import com.ghataa.metaweather.data.model.WeatherInfo
 
+/** Wraps the different data sources.
+ * Contains methods for serving, saving, deleting, etc. data from/to the given data source. */
 interface WeatherInfoDataSource {
 
     suspend fun getWeatherInfoList(month: Int, day: Int): Result<List<WeatherInfo>>

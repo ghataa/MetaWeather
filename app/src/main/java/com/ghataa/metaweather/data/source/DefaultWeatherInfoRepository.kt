@@ -9,6 +9,7 @@ import com.ghataa.metaweather.di.ApplicationModule.WeatherInfoLocalDataSource
 import com.ghataa.metaweather.di.ApplicationModule.WeatherInfoRemoteDataSource
 import javax.inject.Inject
 
+/** The default implementation of the [WeatherInfoRepository] interface. */
 class DefaultWeatherInfoRepository @Inject constructor(
     @WeatherInfoRemoteDataSource private val remoteWeatherInfoDataSource: WeatherInfoDataSource,
     @WeatherInfoLocalDataSource private val localWeatherInfoDataSource: WeatherInfoDataSource
@@ -16,6 +17,8 @@ class DefaultWeatherInfoRepository @Inject constructor(
 
     private var cacheRefreshTimestamp: Long = 0
 
+    /** Fetches data from the remote data source if the cache is invalid and saves it to the local data source.
+     * Serves the requests always from the local data source. */
     override suspend fun getWeatherInfoList(month: Int, day: Int): Result<List<WeatherInfo>> {
         if (cacheIsInvalid()) fetchFromRemoteAndSaveToLocal(month, day)
         return fetchWeatherInfoFromLocal(month, day)
@@ -25,6 +28,7 @@ class DefaultWeatherInfoRepository @Inject constructor(
         cacheRefreshTimestamp = 0
     }
 
+    /** Returns true if the local cache is outdated. */
     private fun cacheIsInvalid(): Boolean =
         System.currentTimeMillis() - cacheRefreshTimestamp > ONE_MINUTE_MS
 

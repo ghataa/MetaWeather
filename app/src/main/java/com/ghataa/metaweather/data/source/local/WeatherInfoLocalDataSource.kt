@@ -6,6 +6,7 @@ import com.ghataa.metaweather.data.Result.Success
 import com.ghataa.metaweather.data.model.WeatherInfo
 import com.ghataa.metaweather.data.source.WeatherInfoDataSource
 
+/** Wraps the local Room database as a unified data source. */
 class WeatherInfoLocalDataSource internal constructor(
     private val dao: WeatherInfoListDao
 ) : WeatherInfoDataSource {

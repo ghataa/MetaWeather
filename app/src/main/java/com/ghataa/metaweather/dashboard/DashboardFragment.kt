@@ -11,6 +11,7 @@ import com.ghataa.metaweather.databinding.FragmentDashboardBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
+/** View layer for showing the current weather information. */
 class DashboardFragment : DaggerFragment() {
 
     @Inject

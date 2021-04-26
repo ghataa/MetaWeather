@@ -12,6 +12,7 @@ import java.util.Calendar
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
+/** This [ViewModel] class is an intermediator between the Repository and View layers. */
 class DashboardViewModel @Inject constructor(
     private val weatherInfoRepository: WeatherInfoRepository
 ) : ViewModel() {
@@ -22,6 +23,8 @@ class DashboardViewModel @Inject constructor(
     private val _refreshingWeatherInfoList = MutableLiveData<Boolean>()
     val refreshingWeatherInfoList: LiveData<Boolean> = _refreshingWeatherInfoList
 
+    /** Loads the current weather information from the Repository layer.
+     * @param invalidateCache If true, local cache will be updated by information from the remote data source. */
     fun loadWeatherInfo(invalidateCache: Boolean) {
         if (invalidateCache) weatherInfoRepository.invalidateCache()
 
@@ -40,5 +43,6 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    /** Invalidates the local cache and loads the current weather information from the Repository layer. */
     fun refresh() = loadWeatherInfo(true)
 }
