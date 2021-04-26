@@ -27,7 +27,7 @@ Example Android project in Kotlin which uses the https://www.metaweather.com/ ap
 
 MetaWeather is a [single-Activity Android application](https://youtu.be/2k8x8V77CrU) which uses [MVVM architecture](https://developer.android.com/jetpack/docs/guide):
 
-![alt text](https://github.com/ghataa/MetaWeather/blob/master/final-architecture.png "MVVM on Android")
+![alt text](https://github.com/ghataa/MetaWeather/blob/main/final-architecture.png "MVVM on Android")
 
 Each layer in the architecture is loosely coupled, mostly with interfaces. The solution is extendable, well-maintainable, and also testable by isolating the different layers/components. The architecture tries to follow the most-used clean code and SOLID principles together with some design patterns like Singleton, Factory, and Dependency Injection.
 
