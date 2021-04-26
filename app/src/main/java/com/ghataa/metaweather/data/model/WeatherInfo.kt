@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.util.Date
+import java.util.UUID
+import kotlin.random.Random
 
 @Entity(tableName = "weather_info_list")
 data class WeatherInfo(
@@ -23,3 +25,22 @@ data class WeatherInfo(
     @SerializedName("visibility") val visibility: Double,
     @SerializedName("predictability") val predictability: Int
 )
+
+fun getDummyWeatherInfo(): WeatherInfo =
+    WeatherInfo(
+        UUID.randomUUID().mostSignificantBits,
+        Date(),
+        listOf("Snow", "Sleet", "Hail", "Thunderstorm", "Heavy Rain", "Light Rain", "Showers", "Heavy Cloud").random(),
+        listOf("sn", "sl", "h", "t", "hr", "lr", "s", "hc").random(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        listOf("NW", "WNW", "NNW").random(),
+        Date(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        Random.nextDouble(),
+        Random.nextInt()
+    )
