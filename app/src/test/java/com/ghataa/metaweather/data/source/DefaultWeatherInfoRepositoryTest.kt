@@ -9,6 +9,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 
+/** Unit tests for the [DefaultWeatherInfoRepository] class. */
 @ExperimentalCoroutinesApi
 class DefaultWeatherInfoRepositoryTest {
 

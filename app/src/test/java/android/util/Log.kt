@@ -1,5 +1,6 @@
 package android.util
 
+/** This class is used by unit tests instead of [Log]. */
 object Log {
 
     @JvmStatic

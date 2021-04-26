@@ -26,6 +26,8 @@ data class WeatherInfo(
     @SerializedName("predictability") val predictability: Int
 )
 
+/** Instantiates a dummy test double object for [WeatherInfo].
+ * @return The dummy test double object. */
 fun getDummyWeatherInfo(): WeatherInfo =
     WeatherInfo(
         UUID.randomUUID().mostSignificantBits,

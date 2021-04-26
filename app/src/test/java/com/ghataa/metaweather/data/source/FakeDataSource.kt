@@ -5,6 +5,7 @@ import com.ghataa.metaweather.data.Result.Error
 import com.ghataa.metaweather.data.Result.Success
 import com.ghataa.metaweather.data.model.WeatherInfo
 
+/** Fake implementation of [WeatherInfoDataSource] for tests. */
 class FakeDataSource(var weatherInfoList: MutableList<WeatherInfo>? = mutableListOf()) : WeatherInfoDataSource {
 
     override suspend fun getWeatherInfoList(month: Int, day: Int): Result<List<WeatherInfo>> {

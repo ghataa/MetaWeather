@@ -6,6 +6,7 @@ import com.ghataa.metaweather.data.Result.Success
 import com.ghataa.metaweather.data.model.WeatherInfo
 import com.ghataa.metaweather.data.source.WeatherInfoDataSource
 
+/** Singleton object which wraps the remote webservice as a unified data source. */
 object WeatherInfoRemoteDataSource : WeatherInfoDataSource {
 
     private val webservice = MainWebservice.create()
